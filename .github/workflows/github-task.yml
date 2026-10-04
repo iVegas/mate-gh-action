@@ -1,0 +1,22 @@
+name: voleger-workflow
+run-name: ${{ github.actor }} triggered this workflow
+
+on:
+  pull_request:
+    types: [opened]
+
+env:
+  GITHUB_ACTIONS: "true"
+
+jobs:
+  github-task-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show GITHUB_ACTIONS
+        run: echo "GITHUB_ACTIONS=$GITHUB_ACTIONS"
+
+      - name: Show branch and repository
+        run: echo "Branch=${{ github.head_ref }} Repository=${{ github.repository }}"
+
+      - name: Show triggering event
+        run: echo "Event=${{ github.event_name }}"
